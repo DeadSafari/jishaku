@@ -106,26 +106,7 @@ class RootCommand(Feature):
         s_for_users = "" if len(self.bot.users) == 1 else "s"
         cache_summary = f"{len(self.bot.guilds)} guild{s_for_guilds} and {len(self.bot.users)} user{s_for_users}"
 
-        # Show shard settings to summary
-        if isinstance(self.bot, discord.AutoShardedClient):
-            if len(self.bot.shards) > 20:
-                summary.append(
-                    f"This bot is automatically sharded ({len(self.bot.shards)} shards of {self.bot.shard_count})"
-                    f" and can see {cache_summary}."
-                )
-            else:
-                shard_ids = ', '.join(str(i) for i in self.bot.shards.keys())
-                summary.append(
-                    f"This bot is automatically sharded (Shards {shard_ids} of {self.bot.shard_count})"
-                    f" and can see {cache_summary}."
-                )
-        elif self.bot.shard_count:
-            summary.append(
-                f"This bot is manually sharded (Shard {self.bot.shard_id} of {self.bot.shard_count})"
-                f" and can see {cache_summary}."
-            )
-        else:
-            summary.append(f"This bot is not sharded and can see {cache_summary}.")
+        summary.append(f"This bot is not sharded and can see {cache_summary}.")
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:  # type: ignore
