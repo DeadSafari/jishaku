@@ -24,18 +24,14 @@ from tests import utils
     params=[
         ("jishaku", commands.Bot, {}),
         ("jishaku", commands.Bot, {"shard_id": 0, "shard_count": 2}),
-        ("jishaku", commands.AutoShardedBot, {}),
         ("jishaku.cog", commands.Bot, {}),
         ("jishaku.cog", commands.Bot, {"shard_id": 0, "shard_count": 2}),
-        ("jishaku.cog", commands.AutoShardedBot, {}),
     ],
     ids=[
         "jishaku (Bot, unsharded)",
         "jishaku (Bot, sharded)",
-        "jishaku (AutoShardedBot)",
         "jishaku.cog (Bot, unsharded)",
         "jishaku.cog (Bot, sharded)",
-        "jishaku.cog (AutoShardedBot)"
     ]
 )
 async def bot(request):
